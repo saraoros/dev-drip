@@ -27,6 +27,8 @@ router.get(
       res.json(product);
     } else {
       res.status(404).json({ message: "Prodcut not found" });
+      // res.status(404)  <- custom error handler
+      // throw new Error('Product not found')
     }
   })
 );

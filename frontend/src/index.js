@@ -1,16 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
 import "./bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <Provider store={store}>
+  <React.StrictMode>
     <App />
-  </Provider>,
+  </React.StrictMode>,
   document.getElementById("root")
 );
 // If you want to start measuring performance in your app, pass a function

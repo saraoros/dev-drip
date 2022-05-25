@@ -1,5 +1,12 @@
 import mongoose from "mongoose";
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/devdrip", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
+
+
+
 // const connectDB = async () => {
 //   try {
 //     const conn = await mongoose.connect(
@@ -7,7 +14,7 @@ import mongoose from "mongoose";
 //       {
 //         useUnifiedTopology: true,
 //         useNewUrlParser: true,
-       
+
 //       }
 //     );
 
@@ -17,15 +24,4 @@ import mongoose from "mongoose";
 //     process.exit(1);
 //   }
 // };
-
-mongoose.connect(
-        process.env.MONGO_URI || "mongodb://localhost/devdrip",
-        {
-          useUnifiedTopology: true,
-          useNewUrlParser: true,
-         
-        }
-      );
-  
-
 export default mongoose.connection;

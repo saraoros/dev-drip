@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import dotenv from "dotenv";
 import users from "./data/users.js";
 import products from "./data/products.js";
 import User from "./models/userModel.js";
 import Product from "./models/productModel.js";
 import Order from "./models/orderModel.js";
-import connectDB from "./config/db.js";
+import DB from "./config/db.js";
 
 dotenv.config();
 
-connectDB();
+// connectDB();
 
 const importData = async () => {
   try {
@@ -28,7 +28,7 @@ const importData = async () => {
     await Product.insertMany(sampleProducts);
 
     console.log("Data Imported!");
-    process.exit();
+    // process.exit();
   } catch (error) {
     console.error(`${error}`);
     process.exit(1);
@@ -52,7 +52,10 @@ const destroyData = async () => {
 if (process.argv[2] === "-d") {
   destroyData();
 } else {
-  importData();
+  DB.once("open", async () => {
+    // console.log(`MongoDB Connected: ${conn.connection.host}`);
+    importData();
+  });
 }
 
-//data not seeded to database 
+//data not seeded to database

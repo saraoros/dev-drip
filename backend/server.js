@@ -1,21 +1,36 @@
 import express from "express";
 import dotenv from "dotenv";
-//import connectDB from "./config/db.js";
-import productRoutes from "./routes/productRoutes.js";
+// import connectDB from "./config/db.js";
+import productModel from "./models/productModel.js";
 //import res from "express/lib/response.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import connectDB from "./config/db.js";
 
 dotenv.config();
 
-//connectDB();
+connectDB();
 
 const app = express();
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.use("/api/producs", productRoutes);
+app.get("/api/products", async (req, res) => {
+  const data = await productModel.find();
+  console.log(data);
+
+  res.send(data);
+
+  // res.send("API is running...");
+});
+
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
 
 app.use(notFound);
 

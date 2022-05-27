@@ -24,15 +24,14 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
+          <li className="mx-5">
+            <br />
+            <Link to="/signup">Sign-Up</Link>
           </li>
+
           <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
+            <br />
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       );
@@ -43,14 +42,11 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
+        <img src="images/devDripLogo.png" />
         </Link>
       </h1>
 
-      <nav>
-        {showNavigation()}
-      </nav>
+      <nav>{showNavigation()}</nav>
     </header>
   );
 }

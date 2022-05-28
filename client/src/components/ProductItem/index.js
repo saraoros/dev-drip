@@ -9,7 +9,7 @@ import { useMutation } from "@apollo/client";
 
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
-const [fav] = useMutation(ADD_FAVORITE)
+  const [fav] = useMutation(ADD_FAVORITE);
   const { image, name, _id, price, quantity } = item;
 
   const { cart } = state;
@@ -35,14 +35,13 @@ const [fav] = useMutation(ADD_FAVORITE)
     }
   };
 
-  const addToFavorites = async() => {
-const response = await fav({
-  variables: {
-    product: _id
-  }
-  
-})
-console.log(response)
+  const addToFavorites = async () => {
+    const response = await fav({
+      variables: {
+        product: _id,
+      },
+    });
+    console.log(response);
   };
 
   return (
@@ -60,7 +59,6 @@ console.log(response)
         </div>
       </div>
       <button onClick={addToCart}>Add to cart</button>
-      <button onClick={addToFavorites}>Add to favorites</button>
     </div>
   );
 }

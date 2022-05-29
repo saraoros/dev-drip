@@ -53,8 +53,14 @@ export const ADD_USER = gql`
 export const ADD_FAVORITE = gql`
   mutation addFavorite($product: ID!) {
     addFavorite(product: $product) {
-      favorites
+      _id
       email
+      favorites {
+        _id
+        name
+      }
+      firstName
+      lastName
     }
   }
 `;

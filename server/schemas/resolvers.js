@@ -147,7 +147,7 @@ const resolvers = {
       return { token, user };
     },
     addFavorite: async (parent, { product }, context) => {
-      console.log(context.user);
+      console.log("adding favorite to this user",context.user);
       if (context.user) {
         const userData = await User.findByIdAndUpdate(
           context.user._id,
@@ -157,11 +157,10 @@ const resolvers = {
           {
             new: true,
           }
-        );
-
+        ).populate("favorites");
+        console.log("added favorite to this user", userData)
         return userData;
       }
-
       throw new AuthenticationError("Not logged in");
     },
   },

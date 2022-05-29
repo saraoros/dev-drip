@@ -13,20 +13,41 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  min-height: 100%;
-}
 
 body {
-  margin: 5px;
+  min-height: 100%;
+  margin: 0px;
   padding: 0px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
-  color: var(--dark);
 }
+
+.jumbo {
+font-size: 5.5vh;
+
+}
+
+
+
+ul {
+  list-style: none;
+  text-align: end;
+}
+
+categories {
+  padding: 15px;
+}
+
+
+.brand-logo {
+max-height: 50%;
+max-width: 50%;
+margin: 0;
+
+}
+
 
 h1,
 h2,
@@ -70,22 +91,23 @@ p {
 }
 
 a {
-  color: var(--tertiary);
+  color: #8a9db4;
   text-decoration: none;
   font-weight: bold;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #4b607c;
 }
 
-header {
+/* header {
   background: #0468a1;
-}
-
+} */
+/* 
 header a {
   color: var(--light);
-}
+} */
 
 button {
   font-size: 1rem;
@@ -95,8 +117,7 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 1px;
-  background-color: var(--secondary);
+  margin: 5px;
 }
 
 button:hover {
@@ -134,8 +155,8 @@ input:focus {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
 }
 
-.container {
-  width: 85%;
+ .container {
+  width: 95%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -152,7 +173,7 @@ input:focus {
 
 .flex-end {
   justify-content: flex-end;
-}
+} 
 
 .mx-1 {
   margin-right: var(--spacing-one);
@@ -192,16 +213,21 @@ input:focus {
 .py-2 {
   padding-top: var(--spacing-two);
   padding-bottom: var(--spacing-two);
-}
+} 
 
-.card {
-  width: 27%;
+ .card {
+  width: 30%;
   text-align: center;
 }
 
 .error-text {
   color: var(--error);
 }
+
+footer {
+  font-weight: 700;
+}
+
 
 @media screen and (max-width: 768px) {
   .card {

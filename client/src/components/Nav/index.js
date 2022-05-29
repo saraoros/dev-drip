@@ -21,6 +21,9 @@ function Header() {
               <a href="/" onClick={() => Auth.logout()}>
                 Logout
               </a>
+              <Link className="m-4" to="/favorites">
+                Favorites
+              </Link>
             </Container>
           </Navbar>
         </>

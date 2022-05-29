@@ -26,7 +26,7 @@ function Detail() {
 
   const { products, cart } = state;
 
-  const [saved, setSaved] = useState (false)
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     // already in global store
@@ -86,12 +86,15 @@ function Detail() {
   };
 
   const addToFavorites = async () => {
-    const {data} = await fav({
+    console.log("adding this product id to favorites", currentProduct._id);
+    const { data } = await fav({
       variables: {
         product: currentProduct._id,
       },
     });
-    if (data) {setSaved(true)} 
+    if (data) {
+      setSaved(true);
+    }
     console.log(data);
   };
 
@@ -121,7 +124,11 @@ function Detail() {
             >
               Remove from Cart
             </button>
-            <button class="btn btn-success" disabled={saved} onClick={addToFavorites}>
+            <button
+              class="btn btn-success"
+              disabled={saved}
+              onClick={addToFavorites}
+            >
               Add to favorites
             </button>
           </p>

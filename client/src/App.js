@@ -19,8 +19,19 @@ import { StoreProvider } from "./utils/GlobalState";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
 import Footer from "./components/Footer";
-import Favorites from "./pages/Favorites"
+import Favorites from "./pages/Favorites";
 
+import { onError } from "apollo-link-error";
+import { ApolloLink } from "apollo-link";
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    console.log("graphQLErrors", graphQLErrors);
+  }
+  if (networkError) {
+    console.log("networkError", networkError);
+  }
+});
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -36,7 +47,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: ApolloLink.from([errorLink, authLink.concat(httpLink)]),
   cache: new InMemoryCache(),
 });
 
@@ -55,7 +66,7 @@ function App() {
               <Route path="/success" element={<Success />} />
               <Route path="/orderHistory" element={<OrderHistory />} />
               <Route path="/products/:id" element={<Detail />} />
-              <Route path="/favorites" element={<Favorites />}/>
+              <Route path="/favorites" element={<Favorites />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </StoreProvider>

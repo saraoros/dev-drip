@@ -31,7 +31,8 @@ const resolvers = {
         const user = await User.findById(context.user._id).populate({
           path: "orders.products",
           populate: "category",
-        });
+        }).populate ("favorites")
+        console.log(user)
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -146,7 +147,7 @@ const resolvers = {
       return { token, user };
     },
     addFavorite: async (parent, { product }, context) => {
-      console.log(context);
+      console.log(context.user);
       if (context.user) {
         const userData = await User.findByIdAndUpdate(
           context.user._id,

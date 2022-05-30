@@ -36,7 +36,7 @@ function Header() {
       return (
         <>
           <Navbar
-            //className="navbar navbar-expand-lg navbar-dark bg-dark"
+            className="navbar"
             bg="light"
             variant="light"
             expand="lg"

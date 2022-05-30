@@ -29,7 +29,9 @@ font-size: 5.5vh;
 
 }
 
-
+.navbar{
+  border-style: none;
+}
 
 ul {
   list-style: none;

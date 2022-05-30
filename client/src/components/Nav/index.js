@@ -1,7 +1,10 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Figure } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/devDripLogo.png"
+import Cart from "../Cart/index"
+
 //import { from } from "@apollo/client";
 
 function Header() {
@@ -10,21 +13,22 @@ function Header() {
       return (
         <>
           <Navbar
-            className="navbar navbar-expand-lg navbar-dark bg-dark"
+            //className="navbar navbar-expand-lg navbar-dark bg-dark"
+            bg="light"
+            variant="light"
             expand="lg"
             collapseOnSelect
           >
-            <Container>
-              <Link className="m-4" to="/orderHistory">
-                Order History
-              </Link>
-              <a href="/" onClick={() => Auth.logout()}>
-                Logout
-              </a>
-              <Link className="m-4" to="/favorites">
-                Favorites
-              </Link>
-            </Container>
+            <Link className="m-4" to="/orderHistory">
+              Order History
+            </Link>
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+            <Link className="m-4" to="/favorites">
+              Favorites
+            </Link>
+            {Cart}
           </Navbar>
         </>
       );
@@ -32,20 +36,18 @@ function Header() {
       return (
         <>
           <Navbar
-            className="navbar navbar-expand-lg navbar-dark bg-dark"
-            variant="dark"
+            //className="navbar navbar-expand-lg navbar-dark bg-dark"
+            bg="light"
+            variant="light"
             expand="lg"
             collapseOnSelect
           >
-            <Container>
-              <Link className="m-4" to="/signup">
-                SignUp
-              </Link>
-              <Link className="m-4" to="/login">
-                Login
-              </Link>
-              {/* <Link to="/cart">Cart</Link> */}
-            </Container>
+            <Link className="m-4" to="/signup">
+              SignUp
+            </Link>
+            <Link className="m-4" to="/login">
+              Login
+            </Link>
           </Navbar>
         </>
       );
@@ -54,13 +56,22 @@ function Header() {
 
   return (
     <Navbar
-      className="navbar navbar-expand-lg navbar-dark bg-dark"
-      variant="dark"
+      //className="navbar navbar-expand-lg navbar-dark bg-dark"
+      bg="light"
+      variant="light"
       expand="lg"
       collapseOnSelect
     >
       <Container>
-        <Navbar.Brand className="jumbo" href="/">DevDrip</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <Figure><Figure.Image
+            alt=""
+            src={Logo}
+            width="auto"
+            height="auto"
+            className="d-inline-block align-top"
+          /></Figure>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

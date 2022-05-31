@@ -62,7 +62,10 @@ const Cart = () => {
 
   if (!state.cartOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
+      <div
+        className="cart-closed container flex-center card my-3"
+        onClick={toggleCart}
+      >
         <span role="img" aria-label="trash">
           🛒
         </span>
@@ -71,7 +74,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart">
+    <div className="cart container flex-center card my-3">
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
@@ -88,23 +91,23 @@ const Cart = () => {
             {Auth.loggedIn() ? (
               <button
                 className="btn 
-          border-primary btn-success m-1"
+           btn-success m-1"
                 onClick={submitCheckout}
               >
                 Checkout
               </button>
             ) : (
-              <span>(log in to check out)</span>
+              <span>(Login to check out)</span>
             )}
           </div>
         </div>
       ) : (
-        <h3>
+        <h4>
           <span role="img" aria-label="shocked">
             😱
           </span>
           You haven't added anything to your cart yet!
-        </h3>
+        </h4>
       )}
     </div>
   );

@@ -45,7 +45,7 @@ function ProductItem(item) {
   };
 
   return (
-    <div className="card border-primary px-1 py-1 m-3">
+    <div id="prod-img" className="card px-1 py-1 m-2">
       <Link to={`/products/${_id}`}>
         <img alt={name} src={`/images/${image}`} />
         <p>{name}</p>
@@ -61,7 +61,7 @@ function ProductItem(item) {
       <button
         type="button"
         className="btn 
-          border-primary btn-success m-1"
+         btn-info m-1"
         onClick={addToCart}
       >
         Add to cart

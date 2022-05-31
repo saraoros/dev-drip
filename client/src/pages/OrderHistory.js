@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -14,14 +14,16 @@ function OrderHistory() {
 
   return (
     <>
-      <div className="container my-1">
+      <div id="order-history" className="container flex-center card my-5">
         <Link to="/">← Back to Products</Link>
 
         {user ? (
           <>
-            <h2>
-              Order History for {user.firstName} {user.lastName}
-            </h2>
+            <h3>
+              Order History for {user.firstName} {user.lastName} :
+            </h3>
+            <br /> 
+            <br />
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">
                 <h3>

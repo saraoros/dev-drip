@@ -65,6 +65,14 @@ export const QUERY_USER = gql`
           image
         }
       }
+      favorites {
+        _id
+        name
+        description
+        price
+        quantity
+        image
+      }
     }
   }
 `;

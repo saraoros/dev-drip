@@ -1,54 +1,86 @@
 import React from "react";
+import { Navbar, Nav, Container, Figure } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/devDripLogo.png"
+import Cart from "../Cart/index"
 
-function Nav() {
+//import { from } from "@apollo/client";
 
+function Header() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
+        <>
+          <Navbar
+            //className="navbar navbar-expand-lg navbar-dark bg-dark"
+            bg="light"
+            variant="light"
+            expand="lg"
+            collapseOnSelect
+          >
+            <Link className="m-4" to="/orderHistory">
               Order History
             </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
-          </li>
-        </ul>
+            <Link className="m-4" to="/favorites">
+              Favorites
+            </Link>
+            {Cart}
+          </Navbar>
+        </>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-5">
-            <br />
-            <Link to="/signup">Sign-Up</Link>
-          </li>
-
-          <li className="mx-1">
-            <br />
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <>
+          <Navbar
+            className="navbar"
+            bg="light"
+            variant="light"
+            expand="lg"
+            collapseOnSelect
+          >
+            <Link className="m-4" to="/signup">
+              SignUp
+            </Link>
+            <Link className="m-4" to="/login">
+              Login
+            </Link>
+          </Navbar>
+        </>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-        <img src="images/devDripLogo.png" />
-        </Link>
-      </h1>
-
-      <nav>{showNavigation()}</nav>
-    </header>
+    <Navbar
+      //className="navbar navbar-expand-lg navbar-dark bg-dark"
+      bg="light"
+      variant="light"
+      expand="lg"
+      collapseOnSelect
+    >
+      <Container>
+        <Navbar.Brand href="/">
+          <Figure><Figure.Image
+            alt=""
+            src={Logo}
+            width="auto"
+            height="auto"
+            className="d-inline-block align-top"
+          /></Figure>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <nav>{showNavigation()}</nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Nav;
+export default Header;

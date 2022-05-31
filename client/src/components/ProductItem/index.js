@@ -35,14 +35,14 @@ function ProductItem(item) {
     }
   };
 
-  const addToFavorites = async () => {
-    const response = await fav({
-      variables: {
-        product: _id,
-      },
-    });
-    console.log(response);
-  };
+  // const addToFavorites = async () => {
+  //   const response = await fav({
+  //     variables: {
+  //       product: _id,
+  //     },
+  //   });
+  //   console.log(response);
+  // };
 
   return (
     <div className="card border-primary px-1 py-1 m-3">

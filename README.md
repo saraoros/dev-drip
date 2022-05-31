@@ -1,3 +1,4 @@
+
 <h1 align="center"><img src="client/src/assets/devDripLogo.png"/><h1>
 
 ## Description
@@ -69,4 +70,5 @@ The goal of this project is to create a one-stop shop application to find clothi
   ## Credits
   We used inspiration for our code from some of our previous projects including:
   * deep-thoughts
+
 

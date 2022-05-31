@@ -101,10 +101,10 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
+        <div id="product-detail" className="container card my-1">
           <Link to="/"> ← Back to Products</Link>
 
-          <h2>{currentProduct.name}</h2>
+          <h2 id="prod-name">{currentProduct.name}</h2>
 
           <p>
             <img src={etsy} alt="Etsy" /> {currentProduct.description}
@@ -114,18 +114,18 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentProduct.price} <br />
-            <button class="btn btn-success" onClick={addToCart}>
+            <button className="btn btn-info" onClick={addToCart}>
               Add to Cart
             </button>
             <button
-              class="btn btn-danger"
+              className="btn btn-danger"
               disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
             >
               Remove from Cart
             </button>
             <button
-              class="btn btn-success"
+              className="btn btn-info"
               disabled={saved}
               onClick={addToFavorites}
             >

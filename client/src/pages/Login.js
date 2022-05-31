@@ -30,13 +30,12 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
+    <div id="login-container" className="container flex-center card my-5">
       <Link to="/signup">← Go to Signup</Link>
-
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email Address:</label>
+        <div className="flex-row space-between my-1">
+          <label htmlFor="email">Email:</label>
           <input
             placeholder="youremail@test.com"
             name="email"

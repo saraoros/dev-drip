@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useMutation } from '@apollo/client';
-import Jumbotron from '../components/Jumbotron';
-import { ADD_ORDER } from '../utils/mutations';
-import { idbPromise } from '../utils/helpers';
+import React, { useEffect } from "react";
+import { useMutation } from "@apollo/client";
+import Jumbotron from "../components/Jumbotron";
+import { ADD_ORDER } from "../utils/mutations";
+import { idbPromise } from "../utils/helpers";
 
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
@@ -10,7 +10,7 @@ function Success() {
   useEffect(() => {
     console.log("test123")
     async function saveOrder() {
-      const cart = await idbPromise('cart', 'get');
+      const cart = await idbPromise("cart", "get");
       const products = cart.map((item) => item._id);
 
       if (products.length) {
@@ -18,12 +18,12 @@ function Success() {
         const productData = data.addOrder.products;
 
         productData.forEach((item) => {
-          idbPromise('cart', 'delete', item);
+          idbPromise("cart", "delete", item);
         });
       }
 
       setTimeout(() => {
-        window.location.assign('/');
+        window.location.assign("/");
       }, 3000);
     }
 
@@ -31,7 +31,7 @@ function Success() {
   }, [addOrder]);
 
   return (
-    <div>
+    <div className="card px-1 py-1 m-2">
       <Jumbotron>
         <h1>Success!</h1>
         <h2>Thank you for your purchase!</h2>

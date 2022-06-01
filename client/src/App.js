@@ -1,6 +1,10 @@
 import React from "react";
-// import { Container } from "react-bootstrap";
+
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
+import ReactSwitch from "react-switch";
+
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,7 +12,6 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-// import Carousel from "./components/Carousel";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
@@ -23,6 +26,8 @@ import Favorites from "./pages/Favorites";
 
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
+
+export const ThemeContext = createContext(null);
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -52,27 +57,52 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
+ 
+
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <StoreProvider>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/success" element={<Success />} />
-              <Route path="/orderHistory" element={<OrderHistory />} />
-              <Route path="/products/:id" element={<Detail />} />
-              <Route path="/favorites" element={<Favorites />} />
-              <Route path="*" element={<NoMatch />} />
-            </Routes>
-          </StoreProvider>
-          <Footer />
-        </div>
-      </Router>
-    </ApolloProvider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="App" id={theme}>
+        <ApolloProvider client={client}>
+          <Router>
+            <div>
+              <StoreProvider>
+                <Header />
+                <div className="switch">
+                  <label>
+                    {" "}
+                    {theme === "light"
+                      ? "Light Mode Activated"
+                      : "Dark Mode Activated"}
+                  </label>
+                  <ReactSwitch
+                    onChange={toggleTheme}
+                    checked={theme === "dark"}
+                  />
+                </div>
+               
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/success" element={<Success />} />
+                  <Route path="/orderHistory" element={<OrderHistory />} />
+                  <Route path="/products/:id" element={<Detail />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route path="*" element={<NoMatch />} />
+                </Routes>
+              </StoreProvider>
+              <Footer />
+            </div>
+          </Router>
+        </ApolloProvider>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

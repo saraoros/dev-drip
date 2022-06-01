@@ -196,6 +196,15 @@ db.once("open", async () => {
       price: 19.96,
       quantity: 10,
     },
+    {
+      name: "Concat Sticker",
+      category: categories[3]._id,
+      description: `Support Etsy Shop: StickOverflow`,
+      website: `https://www.etsy.com/listing/962551216/concat-sticker-water-resistant-laptop?click_key=29481112e6c70e2f8d602fc2360661f630458e9b%3A962551216&click_sum=127641f8&ref=user_profile`,
+      image: "prod21.jpeg",
+      price: 3.28,
+      quantity: 10,
+    },
   ]);
 
   console.log("products seeded");

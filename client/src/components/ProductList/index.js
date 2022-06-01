@@ -7,8 +7,6 @@ import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
 
-
-
 function ProductList() {
   const [state, dispatch] = useStoreContext();
 
@@ -50,16 +48,14 @@ function ProductList() {
   //     variables: {
   //       product: _id
   //     }
-      
+
   //   })
   //   console.log(response)
   //     };
-    
- 
 
   return (
     <div className="my-2">
-      <h3>Must Have Products:</h3>
+      <h3 id="prod-header">Must Have Products:</h3>
       {state.products.length ? (
         <div className="flex-row mb-2">
           {filterProducts().map((product) => (
@@ -74,7 +70,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <h4>You haven't added any products yet!</h4>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>

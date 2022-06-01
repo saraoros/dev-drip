@@ -44,11 +44,12 @@ function CategoryMenu() {
   return (
     <div className="categories">
       <br />
-      <h4>Categories:</h4>
+      <h3 id="cat-header">Categories:</h3>
       {categories.map((item) => (
         <button
+        id="cat-btn"
           className="btn 
-          border-primary btn-success m-1"
+       btn-info m-1"
           key={item._id}
           onClick={() => {
             handleClick(item._id);

@@ -28,11 +28,13 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "category",
-        }).populate ("favorites")
-        console.log(user)
+        const user = await User.findById(context.user._id)
+          .populate({
+            path: "orders.products",
+            populate: "category",
+          })
+          .populate("favorites");
+        console.log(user);
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -83,7 +85,7 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${url}/#/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
 
@@ -147,7 +149,7 @@ const resolvers = {
       return { token, user };
     },
     addFavorite: async (parent, { product }, context) => {
-      console.log("adding favorite to this user",context.user);
+      console.log("adding favorite to this user", context.user);
       if (context.user) {
         const userData = await User.findByIdAndUpdate(
           context.user._id,
@@ -158,7 +160,7 @@ const resolvers = {
             new: true,
           }
         ).populate("favorites");
-        console.log("added favorite to this user", userData)
+        console.log("added favorite to this user", userData);
         return userData;
       }
       throw new AuthenticationError("Not logged in");

@@ -8,6 +8,7 @@ function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
 
   useEffect(() => {
+    console.log("test123")
     async function saveOrder() {
       const cart = await idbPromise("cart", "get");
       const products = cart.map((item) => item._id);

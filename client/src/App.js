@@ -1,8 +1,10 @@
 import React from "react";
+
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 import ReactSwitch from "react-switch";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import {
   ApolloClient,
   InMemoryCache,

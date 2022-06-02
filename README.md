@@ -17,13 +17,20 @@ The goal of this project is to create a one-stop shop application to find clothi
   To use the website simply navigate to the live link [here](https://calm-bayou-49842.herokuapp.com/) 
 
   When a user arrives at the landing page they will be able to view products or select a category to view products of that category.  This page also contains on option to switch to 'dark mode'. At the top of the screen there is a nav bar which will allow them to sign up, login/out, view their favorited items and their shopping cart.  Clicking on the item which brings them to that item's own page where the user can favorite that item. Clicking the shopping cart shows all the items that have been added to the cart with on option to change the quantity of items or checkout. Upon checkout the user is directed to a page showing all of their items with prices and the total amount. The user will then be able to enter their card details and buy the products.
+
+  ### Landing page:
+  <img src="./client/src/assets/readme-images/landing-page.png"/>
+
+  ### Demo
+  <img src="./client/src/assets/readme-images/demo.gif"/>
   
 
   ## Technology
   ### Frontend
   Using React and deployed through heroku
   
-  Styling from [Fort Awesome](https://fortawesome.com/) and UI framework from [React Bootstrap](https://react-bootstrap.github.io/)
+  Styling from [Bootswatch](https://bootswatch.com/) and UI framework from [React Bootstrap](https://react-bootstrap.github.io/)
+  
   ### Backend
   GraphQL with a Node.js and Express.js server.
 
